@@ -11,10 +11,10 @@
 #
 
 class UserPayment < ApplicationRecord
-  belongs_to :cause
+  belongs_to :project
   belongs_to :user
 
-  validates :cause, presence: true
+  validates :project, presence: true
   validates :user, presence: true
   validates :stripe_charge_id, presence: true
   validates :amount, presence: true

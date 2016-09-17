@@ -24,6 +24,6 @@ class User < ApplicationRecord
   validates :email, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }
   validates :email, presence: true
 
-  has_many :causes
+  has_many :projects
   has_many :user_payments
 end

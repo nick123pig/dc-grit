@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: causes
+# Table name: projects
 #
 #  id         :integer          not null, primary key
 #  title      :string           not null
@@ -12,7 +12,7 @@
 
 require 'test_helper'
 
-class CauseTest < ActiveSupport::TestCase
+class ProjectTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

@@ -1,6 +1,6 @@
 class UserPaymentsController < ApplicationController
   before_action :set_user_payment, only: [:show]
-  before_action :set_cause
+  before_action :set_project
 
   def new
     @user_payment = UserPayment.new
@@ -50,16 +50,16 @@ class UserPaymentsController < ApplicationController
       @user_payment = UserPayment.find(params[:id])
     end
 
-    def set_cause
-      @cause = Cause.find(cause_params[:cause_id])
-      unless @cause
-        flash[:error] = "No Cause Selected"
-        redirect_to causes_path 
+    def set_project
+      @project = Project.find(project_params[:project_id])
+      unless @project
+        flash[:error] = "No Project Selected"
+        redirect_to projects_path 
       end
     end
 
-    def cause_params
-      params.permit(:stripeToken, :cause_id, :amount)
+    def project_params
+      params.permit(:stripeToken, :project_id, :amount)
     end
 
 end

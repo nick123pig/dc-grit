@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: causes
+# Table name: projects
 #
 #  id         :integer          not null, primary key
 #  title      :string           not null
@@ -10,7 +10,7 @@
 #  updated_at :datetime         not null
 #
 
-class Cause < ApplicationRecord
+class Project < ApplicationRecord
   belongs_to :user
   has_many :user_payments
 

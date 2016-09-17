@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: causes
+# Table name: projects
 #
 #  id         :integer          not null, primary key
 #  title      :string           not null

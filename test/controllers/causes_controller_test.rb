@@ -1,48 +1,48 @@
 require 'test_helper'
 
-class CausesControllerTest < ActionDispatch::IntegrationTest
+class ProjectsControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @cause = causes(:one)
+    @project = projects(:one)
   end
 
   test "should get index" do
-    get causes_url
+    get projects_url
     assert_response :success
   end
 
   test "should get new" do
-    get new_cause_url
+    get new_project_url
     assert_response :success
   end
 
-  test "should create cause" do
-    assert_difference('Cause.count') do
-      post causes_url, params: { cause: {  } }
+  test "should create project" do
+    assert_difference('Project.count') do
+      post projects_url, params: { project: {  } }
     end
 
-    assert_redirected_to cause_url(Cause.last)
+    assert_redirected_to project_url(Project.last)
   end
 
-  test "should show cause" do
-    get cause_url(@cause)
+  test "should show project" do
+    get project_url(@project)
     assert_response :success
   end
 
   test "should get edit" do
-    get edit_cause_url(@cause)
+    get edit_project_url(@project)
     assert_response :success
   end
 
-  test "should update cause" do
-    patch cause_url(@cause), params: { cause: {  } }
-    assert_redirected_to cause_url(@cause)
+  test "should update project" do
+    patch project_url(@project), params: { project: {  } }
+    assert_redirected_to project_url(@project)
   end
 
-  test "should destroy cause" do
-    assert_difference('Cause.count', -1) do
-      delete cause_url(@cause)
+  test "should destroy project" do
+    assert_difference('Project.count', -1) do
+      delete project_url(@project)
     end
 
-    assert_redirected_to causes_url
+    assert_redirected_to projects_url
   end
 end
