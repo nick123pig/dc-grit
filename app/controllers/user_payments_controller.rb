@@ -44,7 +44,7 @@ class UserPaymentsController < ApplicationController
       redirect_to new_charge_path
     end
 
-    @user_payment = UserPayment.new(user_payment_params)
+    @user_payment = UserPayment.new(user_payment_params.except(:stripeToken), stripe_charge_id: charge.id)
 
     @user_payment.user = current_user
     respond_to do |format|
