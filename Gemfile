@@ -14,6 +14,8 @@ gem 'unicorn', '~> 5.0'
 gem 'unicorn-worker-killer', '~> 0.4.4'
 gem 'byebug'
 gem 'migration_data', '~> 0.2.1'
+gem 'stripe'
+gem 'dotenv'
 
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
