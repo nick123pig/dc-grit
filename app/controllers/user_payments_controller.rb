@@ -1,4 +1,4 @@
-class UserPaymentController < ApplicationController
+class UserPaymentsController < ApplicationController
   before_action :set_user_payment, only: [:show]
   before_action :set_cause
 
