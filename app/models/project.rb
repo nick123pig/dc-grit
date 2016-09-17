@@ -22,4 +22,9 @@ class Project < ApplicationRecord
   def money_raised
     self.user_payments.sum(:amount)
   end
+
+  def money_raised_formatted
+    Money.new(money_raised, "USD").format
+  end
+
 end
