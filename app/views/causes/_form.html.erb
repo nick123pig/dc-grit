@@ -10,6 +10,15 @@
       </ul>
     </div>
   <% end %>
+  <div class="field">
+    <%= f.label :title, :class => 'login-label' %>
+    <%= f.text_field :title, autofocus: true %>
+  </div>
+
+  <div class="field text-left">
+    <%= f.label :location, :class => 'login-label' %>
+    <%= f.text_field :location, autocomplete: "off" %>
+  </div>
 
   <div class="actions">
     <%= f.submit %>
