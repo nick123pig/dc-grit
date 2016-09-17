@@ -23,10 +23,12 @@ ActiveRecord::Schema.define(version: 20160917185433) do
 
   create_table "user_payments", force: :cascade do |t|
     t.integer  "user_id",                                  null: false
+    t.integer  "cause_id",                                 null: false
     t.string   "stripe_charge_id",                         null: false
     t.decimal  "amount",           precision: 8, scale: 2
     t.datetime "created_at",                               null: false
     t.datetime "updated_at",                               null: false
+    t.index ["cause_id"], name: "index_user_payments_on_cause_id"
     t.index ["user_id"], name: "index_user_payments_on_user_id"
   end
 
