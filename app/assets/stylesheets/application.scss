@@ -22,7 +22,12 @@
 body {
     background: #333333;
 }
-
+.sign-out {
+  color: #fff;
+  &:visited {
+    color: #bbb;
+  }
+}
 #notice {
     text-align: center;
 }
