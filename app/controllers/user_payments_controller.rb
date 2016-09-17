@@ -12,7 +12,7 @@ class UserPaymentsController < ApplicationController
 
   def create
     begin
-      @amount = params[:amount]
+      @amount = user_payment_params[:amount]
 
       @amount = @amount.gsub('$', '').gsub(',', '')
 
@@ -32,16 +32,29 @@ class UserPaymentsController < ApplicationController
         return
       end
 
-      Stripe::Charge.create(
+      charge = Stripe::Charge.create(
         :amount => @amount,
         :currency => 'usd',
-        :source => params[:stripeToken],
+        :source => user_payment_params[:stripeToken],
         :description => 'Custom donation'
       )
 
     rescue Stripe::CardError => e
       flash[:error] = e.message
       redirect_to new_charge_path
+    end
+
+    @user_payment = UserPayment.new(user_payment_params)
+
+    @user_payment.user = current_user
+    respond_to do |format|
+      if @project.save
+        format.html { redirect_to @project, notice: 'Project was successfully created.' }
+        format.json { render :show, status: :created, location: @project }
+      else
+        format.html { render :new }
+        format.json { render json: @project.errors, status: :unprocessable_entity }
+      end
     end
   end
 
@@ -51,14 +64,14 @@ class UserPaymentsController < ApplicationController
     end
 
     def set_project
-      @project = Project.find(project_params[:project_id])
+      @project = Project.find(user_payment_params[:project_id])
       unless @project
         flash[:error] = "No Project Selected"
         redirect_to projects_path 
       end
     end
 
-    def project_params
+    def user_payment_params
       params.permit(:stripeToken, :project_id, :amount)
     end
 
