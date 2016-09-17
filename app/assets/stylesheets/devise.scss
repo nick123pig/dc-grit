@@ -1,6 +1,5 @@
-.login-container {
+.card {
     margin: 32px auto;
-    width: 320px;
     border-radius: 3px;
     background-color: #ffffff;
     background-color: #ffffff;
@@ -35,5 +34,8 @@
             background: darken(crimson, 10%);
         }
     }
+}
 
+.login-container {
+    width: 320px;
 }

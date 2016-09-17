@@ -1,6 +1,6 @@
 <div class="page">
     <div class="container">
-        <div class="login-container">
+        <div class="card login-container">
             <h2>Log in</h2>
 
             <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
@@ -9,7 +9,7 @@
                 <%= f.email_field :email, autofocus: true %>
               </div>
 
-              <div class="field text-left">
+              <div class="field">
                 <%= f.label :password, :class => 'login-label' %>
                 <%= f.password_field :password, autocomplete: "off" %>
               </div>
