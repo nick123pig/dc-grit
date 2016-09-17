@@ -5,6 +5,14 @@ source 'https://rubygems.org'
 gem 'rails', '~> 5.0.0', '>= 5.0.0.1'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
+gem 'bootstrap-sass', '~> 3.3.6'
+gem 'annotate', '~> 2.7.1'
+gem 'devise', '~> 4'
+gem 'cancancan', '~> 1.10'
+gem 'jquery-ui-rails', '~> 5.0'
+gem 'unicorn', '~> 5.0'
+gem 'unicorn-worker-killer', '~> 0.4.4'
+gem 'byebug'
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
 # Use SCSS for stylesheets
@@ -29,11 +37,6 @@ gem 'jbuilder', '~> 2.5'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
-
-group :development, :test do
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', platform: :mri
-end
 
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
