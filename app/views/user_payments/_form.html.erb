@@ -20,10 +20,16 @@
     </div>
 
    <input type="hidden" class="form-control" id="cause_id" name="cause_id" value="<%=@cause.id%>">
+   <%= hidden_field_tag(:stripeToken) %>
 
   <div class="actions">
-    <%= f.submit %>
-  </div>
+     <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+          id="target-button"
+          data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+          data-description="DC Grit"
+          data-amount="1"
+          data-locale="auto"></script>
+  </div1
 <% end %>
 
 

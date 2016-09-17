@@ -12,6 +12,7 @@ class UserPaymentsController < ApplicationController
   def create
     begin
       @amount = cause_params[:amount]
+      @amount = @amount.gsub('$', '').gsub(',', '')
 
       customer = Stripe::Customer.create(
         :email => current_user.email,
