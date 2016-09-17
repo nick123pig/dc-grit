@@ -44,12 +44,14 @@ class UserPaymentsController < ApplicationController
       redirect_to new_charge_path
     end
 
-    @user_payment = UserPayment.new(user_payment_params.except(:stripeToken), stripe_charge_id: charge.id)
+    @user_payment = UserPayment.new(project_id: user_payment_params[:project_id] , 
+                                    amount: user_payment_params[:amount],
+                                    stripe_charge_id: charge.id)
 
     @user_payment.user = current_user
     respond_to do |format|
       if @project.save
-        format.html { redirect_to @project, notice: 'Project was successfully created.' }
+        format.html { redirect_to @project, notice: 'Charge was successful!' }
         format.json { render :show, status: :created, location: @project }
       else
         format.html { render :new }
