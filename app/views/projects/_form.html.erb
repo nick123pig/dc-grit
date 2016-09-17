@@ -11,13 +11,18 @@
     </div>
   <% end %>
   <div class="field">
-    <%= f.label :title, :class => 'login-label' %>
-    <%= f.text_field :title, autofocus: true %>
+    <%= f.label :title %>
+    <%= f.text_field :title, autofocus: true, value: "", placeholder: "My Awesome Project" %>
   </div>
 
-  <div class="field text-left">
-    <%= f.label :location, :class => 'login-label' %>
-    <%= f.text_field :location, autocomplete: "off" %>
+  <div class="field">
+    <%= f.label :location %>
+    <%= f.text_field :location, autocomplete: "off", value: "", placeholder: "My Neighborhood" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :goal_amount %>
+    <%= f.text_field :goal_amount, value: "", placeholder: "$100.00" %>
   </div>
 
   <div class="actions">

@@ -2,12 +2,13 @@
 #
 # Table name: projects
 #
-#  id         :integer          not null, primary key
-#  title      :string           not null
-#  location   :text             not null
-#  user_id    :integer          not null
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
+#  id          :integer          not null, primary key
+#  title       :string           not null
+#  location    :text             not null
+#  user_id     :integer          not null
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#  goal_amount :decimal(8, 2)    default(0.0), not null
 #
 
 class Project < ApplicationRecord
