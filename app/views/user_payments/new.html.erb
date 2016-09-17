@@ -1,5 +1,74 @@
-<h1>New User Payment</h1>
 
-<%= render 'form', user_payment: @user_payment %>
+<div class="card">
+<h1>
+  <%= @cause.title %>
+</h1>
 
-<%= link_to 'Back', causes_path %>
+<%= form_tag user_payments_path do %>
+  <% if flash[:error].present? %>
+    <div id="error_explanation">
+      <p><%= flash[:error] %></p>
+    </div>
+  <% end %>
+
+
+  <div class="form-group">
+    <label class="sr-only" for="amount">Amount (in dollars)</label>
+    <div class="input-group">
+      <div class="input-group-addon">$</div>
+      <input type="text" class="form-control" name="amount" id="amount" placeholder="Amount">
+    </div>
+  </div>
+
+  <article>
+    <%= hidden_field_tag(:stripeToken) %>
+  </article>
+  <button id='donateButton'>Donate</button>
+<% end %>
+
+</div>
+<script src="https://checkout.stripe.com/checkout.js"></script>
+
+<script>
+var handler = StripeCheckout.configure({
+  key: '<%= Rails.configuration.stripe[:publishable_key] %>',
+  locale: 'auto',
+  name: 'DC Grit',
+  description: 'One-time donation',
+  token: function(token) {
+    $('input#stripeToken').val(token.id);
+    $('form').submit();
+  }
+});
+
+$('#donateButton').on('click', function(e) {
+  e.preventDefault();
+
+  $('#error_explanation').html('');
+
+  var amount = $('input#amount').val();
+  amount = amount.replace(/\$/g, '').replace(/\,/g, '')
+
+  amount = parseFloat(amount);
+
+  if (isNaN(amount)) {
+    $('#error_explanation').html('<p>Please enter a valid amount in USD ($).</p>');
+  }
+  else if (amount < 5.00) {
+    $('#error_explanation').html('<p>Donation amount must be at least $5.</p>');
+  }
+  else {
+    amount = amount * 100; // Needs to be an integer!
+    handler.open({
+      amount: Math.round(amount)
+    })
+  }
+});
+
+// Close Checkout on page navigation
+$(window).on('popstate', function() {
+  handler.close();
+});
+
+</script>
+
