@@ -1,0 +1,35 @@
+.login-container, .register-container{
+    margin: 0 auto;
+    width: 320px;
+    border-radius: 3px;
+    background-color: #ffffff;
+    background-color: #ffffff;
+    box-shadow: 0 2px 4px 0 rgba(48, 56, 62, 0.35);
+    padding: 16px;
+    .login-label {
+        width: 75px;
+    }
+    input {
+        height: 32px;
+        border-radius: 3px;
+        background-color: #f4f7f9;
+        border: solid 1px #cccccc;
+        border: solid 1px #c9c9c9;
+        padding: 0 16px;
+    }
+
+    input[type="submit"] {
+        width: 288px;
+        height: 48px;
+        border-radius: 3px;
+        background-color: crimson;
+        color: #f4f7f9;
+        letter-spacing: 1px;
+        font-size: 16px;
+        text-transform: uppercase;
+        &:hover {
+            background: darken(crimson, 10%);
+        }
+    }
+
+}
