@@ -50,7 +50,7 @@ class UserPaymentsController < ApplicationController
 
     @user_payment.user = current_user
     respond_to do |format|
-      if @project.save
+      if @user_payment.save
         format.html { redirect_to @project, notice: 'Charge was successful!' }
         format.json { render :show, status: :created, location: @project }
       else

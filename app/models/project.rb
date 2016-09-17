@@ -27,4 +27,8 @@ class Project < ApplicationRecord
     Money.new(money_raised, "USD").format
   end
 
+  def backed_by_string
+    "#{self.user_payments.count} people have backed with an average amount of #{self.user_payments.average(:amount)}"
+  end
+
 end
