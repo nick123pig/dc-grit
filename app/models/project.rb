@@ -19,6 +19,9 @@ class Project < ApplicationRecord
   validates :location, presence: true
   validates :user, presence: true
 
+  geocoded_by :location
+  after_validation :geocode
+
   def progress_to_goal
     if money_raised >= goal_amount
       "100"

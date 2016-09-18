@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160917194223) do
+ActiveRecord::Schema.define(version: 20160918025513) do
 
   create_table "projects", force: :cascade do |t|
     t.string   "title",                                               null: false
@@ -19,6 +19,8 @@ ActiveRecord::Schema.define(version: 20160917194223) do
     t.datetime "created_at",                                          null: false
     t.datetime "updated_at",                                          null: false
     t.decimal  "goal_amount", precision: 8, scale: 2, default: "0.0", null: false
+    t.float    "latitude"
+    t.float    "longitude"
     t.index ["user_id"], name: "index_projects_on_user_id"
   end
 

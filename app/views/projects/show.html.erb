@@ -37,6 +37,12 @@
 </div>
 
 <div class="row">
+  <div class="col-md-12 text-center">
+    <%= image_tag "http://maps.googleapis.com/maps/api/staticmap?center=#{@project.latitude},#{@project.longitude}&markers=#{@project.latitude},#{@project.longitude}&zoom=16&size=640x300&key=#{ENV['GOOGLE_MAPS_API_KEY']}", class: 'img-fluid img-rounded', alt: "#{@project.title} on the map"%>
+  </div>
+</div>
+
+<div class="row">
   <div class="col-md-12">
     <a href="mailto:<%=@project.user.email%>" class="btn btn-info">Contact the organizer</a>
   </div>
