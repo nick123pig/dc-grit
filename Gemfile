@@ -19,6 +19,7 @@ gem 'stripe'
 gem 'money'
 gem 'geocoder'
 gem 'social-share-button'
+gem 'goldiloader'
 
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
