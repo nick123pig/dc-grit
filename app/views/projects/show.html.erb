@@ -1,21 +1,13 @@
 <h1>
   <%= @project.title %>
-  <small><%= social_share_button_tag(@project.title)%></small>     
+  <small><%= social_share_button_tag @project.title %></small>     
 </h1>
 <h3><%= @project.location %></h3>
-
-<% if @project.user == current_user %>
-  <div class="row">
-    <div class="col-md-12">
-      <a href= <%= edit_project_path @project %> class="btn btn-primary">Edit This Event</a>
-    </div>
-  </div>
-<% end %>
 
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
     <%= link_to new_user_payment_path(:project_id => @project.id), class: "btn btn-block btn-lrg btn-primary" do %>
-      <h1>Support This Cause!</h1>
+      <h1>Support This Project!</h1>
     <% end %>
     <h4 class="text-center"><%= @project.backed_by_string %></h4>
   </div>
@@ -55,6 +47,10 @@
 
 <div class="row">
   <div class="col-md-12">
-    <a href="mailto:<%=@project.user.email%>" class="btn btn-info">Contact the organizer</a>
+    <% if @project.user == current_user %>
+      <a href= <%= edit_project_path @project %> class="btn btn-primary">Edit This Event</a>
+    <% else %>
+      <a href="mailto:<%=@project.user.email%>" class="btn btn-info">Contact the organizer</a>
+    <% end %> 
   </div>
 </div>
