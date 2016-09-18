@@ -27,7 +27,7 @@
 
   <div class="field">
     <%= f.label :goal_amount %>
-    <%= f.text_field :goal_amount, value: project.goal_amount || "", placeholder: "$100.00" %>
+    <%= f.text_field :goal_amount, value: (project.goal_amount == 0.0 ? "" : project.goal_amount ), placeholder: "$100.00" %>
   </div>
 
   <div class="actions">
