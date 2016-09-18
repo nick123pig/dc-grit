@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 20160918163649) do
     t.decimal  "goal_amount", precision: 8, scale: 2, default: "0.0", null: false
     t.float    "latitude"
     t.float    "longitude"
-    t.float    "description"
+    t.text     "description"
     t.index ["user_id"], name: "index_projects_on_user_id"
   end
 
