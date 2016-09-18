@@ -40,7 +40,7 @@ class Project < ApplicationRecord
   end
 
   def average_contribution
-    self.user_payments.average(:amount)
+    self.user_payments.average(:amount) || 0
   end
 
   def average_contribution_formatted
