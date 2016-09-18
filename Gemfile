@@ -17,6 +17,7 @@ gem 'byebug'
 gem 'migration_data', '~> 0.2.1'
 gem 'stripe'
 gem 'money'
+gem 'geocoder'
 
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
