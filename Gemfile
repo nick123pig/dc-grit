@@ -18,6 +18,7 @@ gem 'migration_data', '~> 0.2.1'
 gem 'stripe'
 gem 'money'
 gem 'geocoder'
+gem 'social-share-button'
 
 # Use Puma as the app server
 gem 'puma', '~> 3.0'

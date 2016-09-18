@@ -12,6 +12,7 @@
  *
  *= require_tree .
  *= require_self
+ *= require social-share-button
  */
 
  @import "bootstrap-sprockets";
@@ -25,6 +26,15 @@
 .navbar-default{
   background: #ddd;
   border-color: #ddd;
+}
+
+small .social-share-button {
+  float: right !important;
+  .ssb-icon {
+    background-size: 50px 50px;
+    height: 50px;
+    width: 50px;
+  }
 }
 
 h1 .btn { display: inline-block; }

@@ -1,4 +1,7 @@
-<h1><%= @project.title %></h1>
+<h1>
+  <%= @project.title %>
+  <small><%= social_share_button_tag(@project.title)%></small>     
+</h1>
 <h3><%= @project.location %></h3>
 
 <% if @project.user == current_user %>
