@@ -1,32 +1,28 @@
-<div class="card">
-  <h1>Projects</h1>
+<h1>Projects</h1>
 
-  <ul class="list-group">
-    <% @projects.each do |project| %>
-      <li class="list-group-item">
-        <h3>
-          <% klazz = project.money_raised > project.goal_amount ? "progress-bar-success" : "progress-bar-primary" %>
-          <div class="col-md-3 pull-right">
-            <div class="progress progress-striped ">
-              <div class="progress-bar progress-bar-custom <%= klazz %>" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: <%= project.progress_to_goal %>%;">
-                <%= project.money_raised_formatted unless project.progress_to_goal.to_i < 20 %>
-                <span class="sr-only">50% Complete</span>
-              </div>
-            </div>
+<ul class="list-group">
+  <% @projects.each do |project| %>
+  <li class="list-group-item">
+    <h3>
+      <% klazz = project.money_raised > project.goal_amount ? "progress-bar-success" : "progress-bar-primary" %>
+      <div class="col-md-3 pull-right">
+        <div class="progress progress-striped ">
+          <div class="progress-bar progress-bar-custom <%= klazz %>" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: <%= project.progress_to_goal %>%;">
+            <%= project.money_raised_formatted unless project.progress_to_goal.to_i < 20 %>
+            <span class="sr-only">50% Complete</span>
           </div>
+        </div>
+      </div>
 
-          <a href="<%= project_path(project) %>">
-            <%= project.title %>
-          </a>
-        </h3>
-        <h5><%= project.location %></h5>
-      </li>
-    <% end %>
+      <a href="<%= project_path(project) %>">
+        <%= project.title %>
+      </a>
+    </h3>
+    <h5><%= project.location %></h5>
+  </li>
+  <% end %>
 
-  </ul>
-  <br>
+</ul>
+<br>
 
-  <%= link_to 'New Project', new_project_path %>
-  <a rel="nofollow" data-method="delete" href="/users/sign_out">Sign Out</a>
-
-</div>
+<%= link_to 'New Project', new_project_path, class: "btn btn-primary" %>
