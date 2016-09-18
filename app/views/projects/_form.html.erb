@@ -12,17 +12,17 @@
   <% end %>
   <div class="field">
     <%= f.label :title %>
-    <%= f.text_field :title, autofocus: true, value: "", placeholder: "My Awesome Project" %>
+    <%= f.text_field :title, autofocus: true, value: project.title || "", placeholder: "My Awesome Project" %>
   </div>
 
-  <div class="field">
+  <div class="address">
     <%= f.label :location %>
-    <%= f.text_field :location, autocomplete: "off", value: "", placeholder: "My Neighborhood" %>
+    <%= f.text_field :location, autocomplete: "off", value: project.location ||  "", placeholder: "My Neighborhood" %>
   </div>
 
   <div class="field">
     <%= f.label :goal_amount %>
-    <%= f.text_field :goal_amount, value: "", placeholder: "$100.00" %>
+    <%= f.text_field :goal_amount, value: project.goal_amount || "", placeholder: "$100.00" %>
   </div>
 
   <div class="actions">
