@@ -19,8 +19,15 @@
 
 .navbar-brand {
     margin: 0px;
-    padding: 0px;
+    padding: 3px;
 }
+
+.navbar-default{
+  background: #FBDADC;
+  border-color: #FCE1E3;
+}
+
+h1 .btn { display: inline-block; }
 
 .navbar-brand img {
     max-height: 100%;
@@ -28,6 +35,7 @@
 
 body {
     background: #ffffff;
+    font-family: 'Lato', sans-serif;
 }
 .sign-out {
   color: #fff;
