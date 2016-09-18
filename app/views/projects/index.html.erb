@@ -9,7 +9,7 @@
 
 <div class="row">
   <ul class="list-group">
-    <% @projects.each do |project| %>
+    <% @projects.sort{ |a,b| a.distance_from(@location) <=> b.distance_from(@location) }.each do |project| %>
     <li class="list-group-item">
       <h3>
         <% klazz = project.money_raised > project.goal_amount ? "progress-bar-success" : "progress-bar-primary" %>
@@ -27,6 +27,7 @@
         </a>
       </h3>
       <h5><%= project.location %></h5>
+      <h5><%= "#{project.distance_from(@location).round(2) || 0.0} miles away" %></h5>
     </li>
     <% end %>
   </ul>

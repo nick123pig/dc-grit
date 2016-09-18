@@ -5,6 +5,7 @@ class ProjectsController < ApplicationController
   # GET /projects.json
   def index
     @projects = Project.all
+    @location = Rails.env.development? ? Project.try(:first).try(:location) : request.location
   end
 
   # GET /projects/1
