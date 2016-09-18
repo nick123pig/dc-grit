@@ -1,6 +1,9 @@
 
 <div class="card">
   <div class='row'>
+    <div class='col-md-12'>
+      <h1>Pitch In!</h1>
+    </div>
     <div class='col-md-6 col-md-offset-3'>
       <div class='jumbotron'>
         <h2 class='text-center'> <%= @project.title %> </h2>
@@ -39,7 +42,9 @@ var handler = StripeCheckout.configure({
   key: '<%= Rails.configuration.stripe[:publishable_key] %>',
   locale: 'auto',
   name: 'DC Grit',
-  description: 'One-time donation',
+  email: '<%= current_user.email %>',
+  'allow-remember-me': false,
+  description: '<%= @project.title %> in <%= @project.location %>',
   token: function(token) {
     $('input#stripeToken').val(token.id);
     $('form').submit();
