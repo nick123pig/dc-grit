@@ -21,6 +21,7 @@ gem 'social-share-button'
 gem 'stripe'
 gem 'therubyracer'
 gem 'uglifier', '>= 1.3.0'
+gem 'unicorn'
 
 group :development do
   gem 'web-console'
