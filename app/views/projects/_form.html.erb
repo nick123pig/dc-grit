@@ -15,8 +15,13 @@
     <%= f.text_field :title, autofocus: true, value: project.title || "", placeholder: "My Awesome Project" %>
   </div>
 
-  <div class="address">
-    <%= f.label :location %>
+  <div class="field">
+    <%= f.label :description %>
+    <%= f.text_field :description, autofocus: true, value: project.description || "", placeholder: "We're going to plant flowers in the community garden" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :location, value: "Address" %>
     <%= f.text_field :location, autocomplete: "off", value: project.location ||  "", placeholder: "My Neighborhood" %>
   </div>
 
