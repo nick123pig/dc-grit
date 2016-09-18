@@ -19,20 +19,32 @@ class Project < ApplicationRecord
   validates :location, presence: true
   validates :user, presence: true
 
+  def progress_to_goal
+    if money_raised >= goal_amount
+      "100"
+    else
+      (money_raised / self.goal_amount * 100).to_i.to_s
+    end
+  end
+
+  def goal_amount_formatted
+    Money.new(self.goal_amount * 100 , "USD").format
+  end
+
   def money_raised
-    self.user_payments.sum(:amount) * 100
+    self.user_payments.sum(:amount)
   end
 
   def money_raised_formatted
-    Money.new(money_raised, "USD").format
+    Money.new(money_raised * 100, "USD").format
   end
 
   def average_contribution
-    self.user_payments.average(:amount) * 100
+    self.user_payments.average(:amount)
   end
 
   def average_contribution_formatted
-    Money.new(average_contribution, "USD").format
+    Money.new(average_contribution * 100, "USD").format
   end
 
   def backed_by_string
