@@ -20,15 +20,23 @@ class Project < ApplicationRecord
   validates :user, presence: true
 
   def money_raised
-    self.user_payments.sum(:amount)
+    self.user_payments.sum(:amount) * 100
   end
 
   def money_raised_formatted
     Money.new(money_raised, "USD").format
   end
 
+  def average_contribution
+    self.user_payments.average(:amount) * 100
+  end
+
+  def average_contribution_formatted
+    Money.new(average_contribution, "USD").format
+  end
+
   def backed_by_string
-    "#{self.user_payments.count} people have backed with an average amount of #{self.user_payments.average(:amount)}"
+    "#{self.user_payments.count} people have backed with an average amount of #{average_contribution_formatted}"
   end
 
 end
