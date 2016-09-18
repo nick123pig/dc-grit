@@ -12,31 +12,31 @@
 
 ActiveRecord::Schema.define(version: 20160918163649) do
 
-  create_table "projects", force: :cascade do |t|
-    t.string   "title",                                               null: false
-    t.text     "location",                                            null: false
-    t.integer  "user_id",                                             null: false
-    t.datetime "created_at",                                          null: false
-    t.datetime "updated_at",                                          null: false
-    t.decimal  "goal_amount", precision: 8, scale: 2, default: "0.0", null: false
-    t.float    "latitude"
-    t.float    "longitude"
-    t.text     "description"
-    t.index ["user_id"], name: "index_projects_on_user_id"
+  create_table "projects", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "title",                                                             null: false
+    t.text     "location",    limit: 65535,                                         null: false
+    t.integer  "user_id",                                                           null: false
+    t.datetime "created_at",                                                        null: false
+    t.datetime "updated_at",                                                        null: false
+    t.decimal  "goal_amount",               precision: 8, scale: 2, default: "0.0", null: false
+    t.float    "latitude",    limit: 24
+    t.float    "longitude",   limit: 24
+    t.text     "description", limit: 65535
+    t.index ["user_id"], name: "index_projects_on_user_id", using: :btree
   end
 
-  create_table "user_payments", force: :cascade do |t|
+  create_table "user_payments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "user_id",                                  null: false
     t.integer  "project_id",                               null: false
     t.string   "stripe_charge_id",                         null: false
     t.decimal  "amount",           precision: 8, scale: 2, null: false
     t.datetime "created_at",                               null: false
     t.datetime "updated_at",                               null: false
-    t.index ["project_id"], name: "index_user_payments_on_project_id"
-    t.index ["user_id"], name: "index_user_payments_on_user_id"
+    t.index ["project_id"], name: "index_user_payments_on_project_id", using: :btree
+    t.index ["user_id"], name: "index_user_payments_on_user_id", using: :btree
   end
 
-  create_table "users", force: :cascade do |t|
+  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
     t.string   "email",                  default: "", null: false
@@ -49,8 +49,8 @@ ActiveRecord::Schema.define(version: 20160918163649) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
 end
